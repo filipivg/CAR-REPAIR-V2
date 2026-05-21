@@ -1,0 +1,53 @@
+<section class="pagina">
+  <h1>Veículos</h1>
+
+  <form #formVeiculo="ngForm" class="formulario" (ngSubmit)="salvar(formVeiculo)">
+    <label>
+      Cliente
+      <select name="clienteId" [(ngModel)]="novoVeiculo.clienteId" required>
+        <option value="">Selecione</option>
+        <option *ngFor="let c of clientes" [value]="c.id">{{ c.nome }}</option>
+      </select>
+    </label>
+    <label>Placa <input name="placa" [(ngModel)]="novoVeiculo.placa" required placeholder="ABC-1234" /></label>
+    <label>Marca <input name="marca" [(ngModel)]="novoVeiculo.marca" required /></label>
+    <label>Modelo <input name="modelo" [(ngModel)]="novoVeiculo.modelo" required /></label>
+    <label>Ano fabricação <input name="anoFabricacao" type="number" [(ngModel)]="novoVeiculo.anoFabricacao" required /></label>
+    <label>Ano modelo <input name="anoModelo" type="number" [(ngModel)]="novoVeiculo.anoModelo" /></label>
+    <label>Cor <input name="cor" [(ngModel)]="novoVeiculo.cor" /></label>
+    <label>
+      Combustível
+      <select name="combustivel" [(ngModel)]="novoVeiculo.combustivel">
+        <option value="">Selecione</option>
+        <option>Gasolina</option>
+        <option>Etanol</option>
+        <option>Flex</option>
+        <option>Diesel</option>
+        <option>GNV</option>
+        <option>Elétrico</option>
+        <option>Híbrido</option>
+      </select>
+    </label>
+
+    <ul class="erros" *ngIf="errosFormulario.length">
+      <li *ngFor="let e of errosFormulario">{{ e }}</li>
+    </ul>
+    <button type="submit">Adicionar veículo</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr><th>Cliente</th><th>Placa</th><th>Marca/Modelo</th><th>Ano</th><th>Cor</th><th>Combustível</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let v of veiculos">
+        <td>{{ v.clienteNome || nomeCliente(v.clienteId) }}</td>
+        <td>{{ v.placa }}</td>
+        <td>{{ v.marca }} {{ v.modelo }}</td>
+        <td>{{ v.anoFabricacao }}/{{ v.anoModelo }}</td>
+        <td>{{ v.cor }}</td>
+        <td>{{ v.combustivel }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

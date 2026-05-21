@@ -1,0 +1,36 @@
+<section class="pagina">
+  <h1>Dashboard — CarRepair</h1>
+
+  <p *ngIf="carregando">Carregando indicadores…</p>
+
+  <div class="grid" *ngIf="!carregando">
+    <article class="card">
+      <h2>Clientes</h2>
+      <strong>{{ totalClientes }}</strong>
+    </article>
+    <article class="card">
+      <h2>Veículos</h2>
+      <strong>{{ totalVeiculos }}</strong>
+    </article>
+    <article class="card">
+      <h2>Serviços no catálogo</h2>
+      <strong>{{ totalServicos }}</strong>
+    </article>
+    <article class="card">
+      <h2>Ordens de Serviço</h2>
+      <strong>{{ totalOrdens }}</strong>
+    </article>
+    <article class="card destaque">
+      <h2>OS Abertas</h2>
+      <strong>{{ ordensAbertas }}</strong>
+    </article>
+    <article class="card destaque-em">
+      <h2>Em andamento</h2>
+      <strong>{{ ordensEmAndamento }}</strong>
+    </article>
+    <article class="card destaque-ok">
+      <h2>Concluídas</h2>
+      <strong>{{ ordensConcluidas }}</strong>
+    </article>
+  </div>
+</section>
